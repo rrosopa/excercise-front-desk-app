@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IStorageFacility } from 'src/app/models/storageFacility';
+import { IStorageFacilityAreaSummary } from 'src/app/models/storageFacilityAreaSummary';
 import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
@@ -13,7 +13,8 @@ export class StorageListPageComponent implements OnInit {
     private _storageService: StorageService
   ) { }
 
-  _storages: IStorageFacility[] = [];
+  _storages: IStorageFacilityAreaSummary[] = [];
+  _columns: string[] = ['facility', 'area', 'capacity', 'remainingCapacity'];
 
   ngOnInit(): void {
     this.getStorages();
@@ -21,7 +22,7 @@ export class StorageListPageComponent implements OnInit {
 
   getStorages(){
     this._storageService
-      .getStorageFacilities()
+      .getStorageFacilityAreaSummary()
       .subscribe(x => {
         this._storages = x.data;
     });

@@ -1,20 +1,30 @@
-<h3>Storages</h3>
-<table>
-    <thead>
-        <tr>
-            <th>Id</th>        
-            <th>Name</th>
-            <th></th>
-        </tr>
-    </thead>
+<div class="page-head">
+    <h3>Storage</h3>
+</div>
+<div class="table-container">
+    <table mat-table [dataSource]="_storages" class="mat-elevation-z8">
 
-    <tbody *ngIf="_storages">
-        <tr *ngFor="let s of _storages">
-            <td>{{s.id}}</td>
-            <td>{{s.name}}</td>
-            <td>
-                <a mat-button>View Details</a>
-            </td>
-        </tr>
-    </tbody>
-</table>
+        <ng-container matColumnDef="facility">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let e"> {{e.storageFacilityName}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="area">
+            <th mat-header-cell *matHeaderCellDef> Area </th>
+            <td mat-cell *matCellDef="let e"> {{e.storageAreaName}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="capacity">
+            <th mat-header-cell *matHeaderCellDef> Capacity </th>
+            <td mat-cell *matCellDef="let e"> {{e.totalCapacity}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="remainingCapacity">
+            <th mat-header-cell *matHeaderCellDef> Remaining Capacity </th>
+            <td mat-cell *matCellDef="let e"> {{e.remainingCapacity}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="_columns"></tr>
+        <tr mat-row *matRowDef="let row; columns: _columns;"></tr>
+    </table>
+</div>

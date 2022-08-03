@@ -12,3 +12,11 @@ export interface ICustomerBox extends IBaseEntity<string> {
     boxStatusId: string;
     boxStatus: IBoxStatus;
 }
+
+export interface ICustomerBoxDto {
+    id: string;
+    customerId: string;
+    label: string;
+    storageFacility: string;
+    storageAreaName: string;
+}

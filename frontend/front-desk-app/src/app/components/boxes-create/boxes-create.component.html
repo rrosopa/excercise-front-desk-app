@@ -1,29 +1,40 @@
-<div>
-    <ng-container *ngIf="_form">
-        <form [formGroup]="_form">
+<div class="form-container">
+    <form [formGroup]="_form">
+        <h3>Store Box</h3>
+        <h6>Customer: {{_customerId}}</h6>
 
-            <label for="label">Label: </label>
-            <input id="label" type="text" formControlName="label" />
-          
-            <label for="box-type">Last Name: </label>
-            <select id="box-type" formControlName="boxTypeId">
-                <option>Select Box Type</option>
-                <option *ngFor="let o of _boxTypes" [ngValue]="o.id">{{o.name}}</option>
+        <mat-form-field>
+            <mat-label>Label</mat-label>
+            <input matInput formControlName="label" required>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Box Type</mat-label>
+            <select matNativeControl required formControlName="boxTypeId">              
+                <option *ngFor="let e of _boxTypes" [value]="e.id">
+                    {{e.name}}
+                </option>
             </select>
-            
-            <label for="storage">Storage Facility: </label>
-            <select id="storage" formControlName="storageFacilityId">
-                <option value="">Select Facility</option>
-                <option *ngFor="let o of _storage" [ngValue]="o.id">{{o.name}}</option>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Storage Facility</mat-label>
+            <select matNativeControl required formControlName="storageFacilityId">              
+                <option *ngFor="let e of _storage" [value]="e.id">
+                    {{e.name}}
+                </option>
             </select>
-    
-            <label for="storageAreas">Storage Facility: </label>
-            <select id="storageAreas" formControlName="storageAreaId">                
-                <option>Select Storage Area</option>
-                <option *ngFor="let o of _storageAreas" [ngValue]="o.id">{{o.name}}</option>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Storage Area</mat-label>
+            <select matNativeControl required formControlName="storageAreaId">              
+                <option *ngFor="let e of _storageAreas" [value]="e.id">
+                    {{e.name}}
+                </option>
             </select>
-          
-            <button mat-button type (click)="storeBox()">Save</button>
-        </form>
-    </ng-container>
+        </mat-form-field>
+      
+        <button mat-raised-button color="primary" (click)="storeBox()">Save</button>
+    </form>
 </div>

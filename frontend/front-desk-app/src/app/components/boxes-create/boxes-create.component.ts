@@ -97,8 +97,9 @@ export class BoxesCreateComponent implements OnInit {
             this._router.navigate(['customers', this._customerId, 'boxes']);
           }
         },
-        e => {        
-        alert(e.errorMessage);
+        e => {    
+          console.error(e);    
+          alert(e.errorMessage);
         }
       );
   }

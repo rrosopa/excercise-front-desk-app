@@ -1,16 +1,22 @@
-<div>
+<div class="form-container">
     <form [formGroup]="_customerForm">
+        <h3>Register Customer</h3>
 
-        <label for="first-name">First Name: </label>
-        <input id="first-name" type="text" formControlName="firstName">
-      
-        <label for="last-name">Last Name: </label>
-        <input id="last-name" type="text" formControlName="lastName">
+        <mat-form-field>
+            <mat-label>First Name</mat-label>
+            <input matInput formControlName="firstName" required>
+        </mat-form-field>
 
-        
-        <label for="last-name">Phone Number: </label>
-        <input id="last-name" type="text" formControlName="phone">
+        <mat-form-field>
+            <mat-label>Last Name</mat-label>
+            <input matInput formControlName="lastName" required>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Phone Number</mat-label>
+            <input matInput formControlName="phone" required>
+        </mat-form-field>
       
-        <button mat-button type (click)="save()">Save</button>
+        <button mat-raised-button color="primary" (click)="save()">Save</button>
     </form>
 </div>

@@ -14,6 +14,7 @@ export class CustomerListPageComponent implements OnInit {
   ) { }
 
   _customers: ICustomer[] = [];
+  _columns: string[] = ['id', 'name', 'phoneNumber', 'action']
 
   ngOnInit(): void {
     this.getCustomers();

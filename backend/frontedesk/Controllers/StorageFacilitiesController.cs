@@ -1,6 +1,7 @@
 using Application.Common.Models;
 using Application.StorageAreas.Query.GetStorageAreaByStorageFacilityId;
 using Application.StorageFacilities.Query.GetStorageAreas;
+using Application.StorageFacilities.Query.StorageFacilityAreaSummary;
 using Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -19,6 +20,13 @@ namespace frontedesk.Controllers
         public async Task<ActionResult<Result<List<StorageFacility>>>> GetListAsync(CancellationToken cancellationToken = default)
         {
             return Ok(await _sender.Send(new GetStorageFacilitiesFacilitiesQuery(), cancellationToken));
+        }
+
+        
+        [HttpGet("summary")]
+        public async Task<ActionResult<Result<List<StorageFacilityAreaSummaryDto>>>> GetSummaryAsync(CancellationToken cancellationToken = default)
+        {
+            return Ok(await _sender.Send(new StorageFacilityAreaSummaryQuery(), cancellationToken));
         }
 
         [HttpGet("{storageFacilityId}/areas")]

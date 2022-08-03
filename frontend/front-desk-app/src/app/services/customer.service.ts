@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ICustomer } from '../models/customer';
-import { ICustomerBox } from '../models/customerBox';
+import { ICustomerBoxDto } from '../models/customerBox';
 import { IResult } from '../models/result';
 
 @Injectable({
@@ -17,8 +17,8 @@ export class CustomerService {
     return this._http.get<IResult<ICustomer[]>>(`${environment.baseApiUrl}/customers`)
   }
 
-  getCustomerBoxes(customerId: string): Observable<IResult<ICustomerBox[]>>{
-    return this._http.get<IResult<ICustomerBox[]>>(`${environment.baseApiUrl}/customers/${customerId}/boxes`)
+  getCustomerBoxes(customerId: string): Observable<IResult<ICustomerBoxDto[]>>{
+    return this._http.get<IResult<ICustomerBoxDto[]>>(`${environment.baseApiUrl}/customers/${customerId}/boxes`)
   }
 
   addCustomer(firstName: string, lastName: string, phone: string) : Observable<IResult<string>>{

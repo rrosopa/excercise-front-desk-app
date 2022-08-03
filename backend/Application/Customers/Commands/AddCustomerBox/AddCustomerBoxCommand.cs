@@ -57,7 +57,7 @@ namespace Application.Customers.Commands.AddCustomerBox
                 return Result<Guid>.Error($"Box type '{boxType.Name}' is not allowed to be stored in this area.");
 
 
-            var box = new CustomerBox
+            var box = new Domain.Entities.CustomerBox
             {
                 Label = request.Label,
                 StorageAreaId = request.StorageAreaId,

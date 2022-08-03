@@ -88,15 +88,13 @@ namespace frontedesk.Controllers
         public async Task<ActionResult<Result<bool>>> RemoveBoxAsync(
             Guid customerId,
             Guid boxId,
-            [FromBody] RemoveCustomerBoxCommand command,
             CancellationToken cancellationToken = default)
         {
-            if (command == null)
-                return BadRequest(Result<bool>.Error("Invalid request body."));
-
-            command.CustomerId = customerId;
-            command.BoxId = boxId;
-            var result = await _sender.Send(command, cancellationToken);
+            var result = await _sender.Send(new RemoveCustomerBoxCommand
+            {
+                CustomerId = customerId,
+                BoxId = boxId
+            }, cancellationToken);
 
             if (!result.IsSuccess)
             {

@@ -14,6 +14,8 @@ import { DataService } from './services/data.service';
 import {MatToolbarModule} from '@angular/material/toolbar'
 import {MatButtonModule} from '@angular/material/button';
 import {MatTableModule} from '@angular/material/table';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
 
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -24,6 +26,8 @@ import { CustomerEditPageComponent } from './components/customer-edit-page/custo
 import { BoxesCreateComponent } from './components/boxes-create/boxes-create.component';
 import { BoxesViewComponent } from './components/boxes-view/boxes-view.component';
 import { BoxTypesService } from './services/box-types.service';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 @NgModule({
   declarations: [
@@ -38,12 +42,15 @@ import { BoxTypesService } from './services/box-types.service';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     CommonModule,
     AppRoutingModule,    
     HttpClientModule,
     MatToolbarModule,
     MatButtonModule,
     MatTableModule,
+    MatInputModule,
+    MatSelectModule,
     ReactiveFormsModule
   ],
   providers: [

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ICustomerBox } from 'src/app/models/customerBox';
+import { ICustomerBoxDto } from 'src/app/models/customerBox';
 import { CustomerService } from 'src/app/services/customer.service';
 
 @Component({
@@ -11,7 +11,8 @@ import { CustomerService } from 'src/app/services/customer.service';
 export class BoxesViewComponent implements OnInit {
 
   _customerId: string = '';
-  _boxes: ICustomerBox[] = [];
+  _boxes: ICustomerBoxDto[] = [];
+  _columns: string[] = ['id', 'label', 'facility', 'area', 'action']
 
   constructor(
     private _customerService: CustomerService,
@@ -21,6 +22,7 @@ export class BoxesViewComponent implements OnInit {
   ngOnInit(): void {
     this._route.params.subscribe(params => {
       this._customerId = params['id'];
+      this.getBoxes();
     });
   }
 
@@ -40,6 +42,19 @@ export class BoxesViewComponent implements OnInit {
         alert(e.errorMessage);
         }
       );
+  }
+
+  removeBox(boxId: string){
+    this._customerService
+      .removeBox(this._customerId, boxId)
+      .subscribe(
+        x => {
+          this.getBoxes();
+        },
+        e => {
+          alert(e.errorMessage);
+        }
+      )
   }
 
 }
