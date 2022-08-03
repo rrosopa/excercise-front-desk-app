@@ -7,6 +7,7 @@ namespace Application.Common.Models
         public T Data { get; private set; }
         public string ErrorMessage { get; private set; }
         public int StatusCode { get; private set; } = (int)HttpStatusCode.OK;
+        public bool IsSuccess => string.IsNullOrEmpty(ErrorMessage);
 
         public Result(T data)
         {

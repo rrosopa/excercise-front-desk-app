@@ -7,21 +7,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="StorageAreas\Query\GetStorageAreaHistoryByBoxId\**" />
+    <EmbeddedResource Remove="StorageAreas\Query\GetStorageAreaHistoryByBoxId\**" />
+    <None Remove="StorageAreas\Query\GetStorageAreaHistoryByBoxId\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="11.0.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="MediatR" Version="10.0.1" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.7" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="6.0.7" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="StorageAreas\Query\GetStorageAreas\" />
-    <Folder Include="StorageAreas\Query\GetStorageAreaHistory\" />
   </ItemGroup>
 
 </Project>

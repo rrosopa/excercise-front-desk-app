@@ -15,8 +15,8 @@ namespace Application.Customers.Commands.RemoveCustomerBox
 
     public class RemoveCustomerBoxCommandHandler : IRequestHandler<RemoveCustomerBoxCommand, Result<bool>>
     {
-        private readonly IAppContext _context;
-        public RemoveCustomerBoxCommandHandler(IAppContext context)
+        private readonly IAppDbContext _context;
+        public RemoveCustomerBoxCommandHandler(IAppDbContext context)
         {
             _context = context;
         }
@@ -48,7 +48,10 @@ namespace Application.Customers.Commands.RemoveCustomerBox
                 DateTime = DateTime.Now,
                 Action = nameof(BoxStatuses.Retreived)
             });
-            // savesync here
+
+
+            if (await _context.SaveChangesAsync(cancellationToken) < 1)
+                return Result<bool>.Error("We are unable to process your request at the moment.");
 
             return Result<bool>.Ok(true);
         }

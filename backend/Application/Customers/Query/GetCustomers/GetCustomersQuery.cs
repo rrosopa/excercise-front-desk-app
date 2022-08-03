@@ -12,8 +12,8 @@ namespace Application.Customers.Query.GetCustomers
 
     public class GetCustomersQueryHandler : IRequestHandler<GetCustomersQuery, Result<List<Customer>>>
     {
-        private readonly IAppContext _context;
-        public GetCustomersQueryHandler(IAppContext context)
+        private readonly IAppDbContext _context;
+        public GetCustomersQueryHandler(IAppDbContext context)
         {
             _context = context;
         }

@@ -17,8 +17,8 @@ namespace Application.Customers.Commands.AddCustomerBox
 
     public class AddCustomerCommandHandler : IRequestHandler<AddCustomerBoxCommand, Result<Guid>>
     {
-        private readonly IAppContext _context;
-        public AddCustomerCommandHandler(IAppContext context)
+        private readonly IAppDbContext _context;
+        public AddCustomerCommandHandler(IAppDbContext context)
         {
             _context = context;
         }
@@ -54,7 +54,7 @@ namespace Application.Customers.Commands.AddCustomerBox
                 return Result<Guid>.Error("BoxTypeId is invalid.");
 
             if(boxType.Name != storageArea.Name) // stick with this for now :)
-                return Result<Guid>.Error("BoxTypeId is invalid.");
+                return Result<Guid>.Error($"Box type '{boxType.Name}' is not allowed to be stored in this area.");
 
 
             var box = new CustomerBox
@@ -72,7 +72,9 @@ namespace Application.Customers.Commands.AddCustomerBox
                 DateTime = DateTime.Now,
                 Action = nameof(BoxStatuses.Stored)
             });
-            // savesync here
+
+            if (await _context.SaveChangesAsync(cancellationToken) < 1)
+                return Result<Guid>.Error("We are unable to process your request at the moment.");
 
             return Result<Guid>.Ok(box.Id);
         }

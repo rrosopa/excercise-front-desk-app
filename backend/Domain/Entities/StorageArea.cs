@@ -2,6 +2,8 @@
 {
     public class StorageArea : BaseEntity<Guid>
     {
+        public Guid StorageFacilityId { get; set; }
+        public virtual StorageFacility StorageFacility { get; set; }
         public Guid StorageAreaTypeId { get; set; }
         public string Name { get; set; }
         public virtual StorageAreaType StorageAreaType { get; set; }

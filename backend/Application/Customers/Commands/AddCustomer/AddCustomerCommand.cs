@@ -14,8 +14,8 @@ namespace Application.Customers.Commands.AddCustomer
 
     public class AddCustomerCommandHandler : IRequestHandler<AddCustomerCommand, Result<Guid>>
     {
-        private readonly IAppContext _context;
-        public AddCustomerCommandHandler(IAppContext context)
+        private readonly IAppDbContext _context;
+        public AddCustomerCommandHandler(IAppDbContext context)
         {
             _context = context;
         }
@@ -39,7 +39,8 @@ namespace Application.Customers.Commands.AddCustomer
             };
 
             _context.Customers.Add(customer);
-            // save async here
+            if (await _context.SaveChangesAsync(cancellationToken) < 1)
+                return Result<Guid>.Error("We are unable to process your request at the moment.");
 
             return Result<Guid>.Ok(customer.Id);
         }
