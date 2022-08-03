@@ -8,6 +8,7 @@ namespace Application.Persistence
     {
         DbSet<BoxType> BoxTypes { get; }
         DbSet<Customer> Customers { get; }
+        DbSet<CustomerBox> CustomerBoxes { get; }
         DbSet<StorageArea> StorageAreas { get; }
         DbSet<StorageAreaType> StorageAreaTypes { get; }
         public DbSet<StorageFacility> StorageFacilities { get; }
@@ -20,6 +21,7 @@ namespace Application.Persistence
     {
         public DbSet<BoxType> BoxTypes => Set<BoxType>();
         public DbSet<Customer> Customers => Set<Customer>();
+        public DbSet<CustomerBox> CustomerBoxes => Set<CustomerBox>();
         public DbSet<StorageArea> StorageAreas => Set<StorageArea>();
         public DbSet<StorageAreaType> StorageAreaTypes => Set<StorageAreaType>();
         public DbSet<StorageFacility> StorageFacilities => Set<StorageFacility>();

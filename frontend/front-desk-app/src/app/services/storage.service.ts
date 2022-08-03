@@ -18,6 +18,6 @@ export class StorageService {
   }
 
   getStorageAreas(facilityId: number) : Observable<IResult<IStorageAreaDto[]>>{
-    return this._http.get<IResult<IStorageAreaDto[]>>(`${environment.baseApiUrl}/${facilityId}/areas`)
+    return this._http.get<IResult<IStorageAreaDto[]>>(`${environment.baseApiUrl}/storage-facilities/${facilityId}/areas`)
   }
 }

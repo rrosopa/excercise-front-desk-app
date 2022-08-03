@@ -1,0 +1,29 @@
+<div>
+    <ng-container *ngIf="_form">
+        <form [formGroup]="_form">
+
+            <label for="label">Label: </label>
+            <input id="label" type="text" formControlName="label" />
+          
+            <label for="box-type">Last Name: </label>
+            <select id="box-type" formControlName="boxTypeId">
+                <option>Select Box Type</option>
+                <option *ngFor="let o of _boxTypes" [ngValue]="o.id">{{o.name}}</option>
+            </select>
+            
+            <label for="storage">Storage Facility: </label>
+            <select id="storage" formControlName="storageFacilityId">
+                <option value="">Select Facility</option>
+                <option *ngFor="let o of _storage" [ngValue]="o.id">{{o.name}}</option>
+            </select>
+    
+            <label for="storageAreas">Storage Facility: </label>
+            <select id="storageAreas" formControlName="storageAreaId">                
+                <option>Select Storage Area</option>
+                <option *ngFor="let o of _storageAreas" [ngValue]="o.id">{{o.name}}</option>
+            </select>
+          
+            <button mat-button type (click)="storeBox()">Save</button>
+        </form>
+    </ng-container>
+</div>

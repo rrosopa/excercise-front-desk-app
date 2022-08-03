@@ -1,6 +1,6 @@
 <div class="page-head">
     <h3>Customers</h3>
-    <a mat-button routerLink="/customers/edit">Add</a>
+    <a mat-button routerLink="/customers/create">Add</a>
 </div>
 <table>
     <thead>
@@ -17,8 +17,8 @@
             <td>{{c.lastName}}, {{c.firstName}}</td>
             <td>{{c.phoneNumber}}</td>
             <td>
-                <a mat-button>View Boxes</a>                
-                <a mat-button>Add Boxes</a>
+                <a mat-button routerLink="/customers/{{c.id}}/boxes">View Boxes</a>                
+                <a mat-button routerLink="/customers/{{c.id}}/boxes/create">Add Boxes</a>
             </td>
         </tr>
     </tbody>

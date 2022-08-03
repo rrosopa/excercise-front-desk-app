@@ -21,7 +21,7 @@ export class CustomerListPageComponent implements OnInit {
 
   getCustomers(){
     this._customerService
-      .getList()
+      .getCustomers()
       .subscribe(x => {
         this._customers = x.data;
     });

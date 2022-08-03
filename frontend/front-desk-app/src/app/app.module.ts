@@ -21,13 +21,20 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CustomerListPageComponent } from './components/customer-list-page/customer-list-page.component';
 import { StorageListPageComponent } from './components/storage-list-page/storage-list-page.component';
 import { CustomerEditPageComponent } from './components/customer-edit-page/customer-edit-page.component';
+import { BoxesCreateComponent } from './components/boxes-create/boxes-create.component';
+import { BoxesViewComponent } from './components/boxes-view/boxes-view.component';
+import { BoxTypesService } from './services/box-types.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     CustomerListPageComponent,
     StorageListPageComponent,
-    CustomerEditPageComponent
+    CustomerEditPageComponent,
+    BoxesCreateComponent,
+    BoxesViewComponent,
+    BoxesCreateComponent,
+    BoxesViewComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +49,8 @@ import { CustomerEditPageComponent } from './components/customer-edit-page/custo
   providers: [
     CustomerService,
     StorageService,
-    DataService
+    DataService,
+    BoxTypesService
   ],
   bootstrap: [AppComponent]
 })

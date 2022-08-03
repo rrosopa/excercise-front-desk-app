@@ -21,8 +21,6 @@ namespace Application.Customers.Query.GetCustomers
         public async Task<Result<List<Customer>>> Handle(GetCustomersQuery request, CancellationToken cancellationToken)
         {
             var customers = await _context.Customers
-                                .Include(x => x.Boxes)
-                                .ThenInclude(x => x.StorageArea)
                                 .ToListAsync(cancellationToken);
 
             return Result<List<Customer>>.Ok(customers);

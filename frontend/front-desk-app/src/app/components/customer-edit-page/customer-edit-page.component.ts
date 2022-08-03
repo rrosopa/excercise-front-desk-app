@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CustomerService } from 'src/app/services/customer.service';
 
 @Component({
@@ -16,7 +17,8 @@ export class CustomerEditPageComponent implements OnInit {
   });
 
   constructor(
-    private _customerService: CustomerService
+    private _customerService: CustomerService,
+    private _router: Router
   ) { }
 
   ngOnInit(): void {
@@ -25,14 +27,19 @@ export class CustomerEditPageComponent implements OnInit {
   save(){
     var data = this._customerForm.value;
     this._customerService
-      .add(data.firstName, data.lastName, data.phone)
-      .subscribe(x => {
-        if(x.errorMessage){
-
+      .addCustomer(data.firstName, data.lastName, data.phone)
+      .subscribe(
+        x => {
+          if(x.errorMessage){
+            alert(x.errorMessage);
+          }
+          else{
+            this._router.navigate(['customers']);
+          }
+        },
+        e => {        
+          alert(e.errorMessage);
         }
-        else{
-          // redirrect
-        }
-      })
+      );
   }
 }

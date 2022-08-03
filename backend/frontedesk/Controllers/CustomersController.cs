@@ -2,6 +2,7 @@ using Application.Common.Models;
 using Application.Customers.Commands.AddCustomer;
 using Application.Customers.Commands.AddCustomerBox;
 using Application.Customers.Commands.RemoveCustomerBox;
+using Application.Customers.Query.GetCustomerBoxes;
 using Application.Customers.Query.GetCustomers;
 using Domain.Entities;
 using MediatR;
@@ -42,6 +43,19 @@ namespace frontedesk.Controllers
                 if (result.StatusCode == (int)HttpStatusCode.NotFound)
                     return NotFound(result);
             }
+
+            return Ok(result);
+        }
+
+        [HttpGet("{customerId}/boxes")]
+        public async Task<ActionResult<Result<List<CustomerBox>>>> AddBoxAsync(
+            Guid customerId,
+            CancellationToken cancellationToken = default)
+        {
+            var result = await _sender.Send(new GetCustomerBoxesQuery{  CustomerId = customerId }, cancellationToken);
+
+            if (!result.IsSuccess)
+                return BadRequest(result);
 
             return Ok(result);
         }
