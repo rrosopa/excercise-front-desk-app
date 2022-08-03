@@ -22,7 +22,7 @@ namespace frontedesk.Controllers
         }
 
         [HttpGet("{storageFacilityId}/areas")]
-        public async Task<ActionResult<Result<List<StorageFacility>>>> GetAreasListAsync(
+        public async Task<ActionResult<Result<List<StorageAreaDto>>>> GetAreasListAsync(
             Guid storageFacilityId,
             CancellationToken cancellationToken = default)
         {

@@ -1,0 +1,20 @@
+<h3>Storages</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>        
+            <th>Name</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody *ngIf="_storages">
+        <tr *ngFor="let s of _storages">
+            <td>{{s.id}}</td>
+            <td>{{s.name}}</td>
+            <td>
+                <a mat-button>View Details</a>
+            </td>
+        </tr>
+    </tbody>
+</table>

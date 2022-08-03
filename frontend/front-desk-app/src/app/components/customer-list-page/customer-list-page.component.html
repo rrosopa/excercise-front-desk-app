@@ -1,0 +1,25 @@
+<div class="page-head">
+    <h3>Customers</h3>
+    <a mat-button routerLink="/customers/edit">Add</a>
+</div>
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>        
+            <th>Name</th>  
+            <th>Phone</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody *ngIf="_customers">
+        <tr *ngFor="let c of _customers">
+            <td>{{c.id}}</td>
+            <td>{{c.lastName}}, {{c.firstName}}</td>
+            <td>{{c.phoneNumber}}</td>
+            <td>
+                <a mat-button>View Boxes</a>                
+                <a mat-button>Add Boxes</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
